@@ -21,7 +21,7 @@ router.post("/sendVerificationEmail", async (req, res) => {
 
     // Send mail with defined transport object
     let info = await transporter.sendMail({
-      from: '"Your App" <harshy050902@gmail.com>',
+      from: '"Dribble" <harshy050902@gmail.com>',
       to: email,
       subject: "Email Verification",
       text: `Your verification code is: ${verificationToken}, verify here: ${process.env.Frontend_URL}/verify`,

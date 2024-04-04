@@ -53,7 +53,7 @@ router.post("/register", async (req, res) => {
     });
 
     const mailOptions = {
-      from: "harshy050902@gmail.com", // Update with your email
+      from: '"Dribble" <harshy050902@gmail.com>', // Update with your email
       to: email,
       subject: "Email Verification",
       text: `Your verification code is: ${verificationToken}, verify here: ${process.env.Frontend_URL}/verify`,
@@ -87,6 +87,7 @@ router.post("/register", async (req, res) => {
         res.json({
           token,
           msg: "User registered successfully. Verification email sent.",
+          verificationToken,
         });
       }
     );

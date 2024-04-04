@@ -69,13 +69,14 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("isAuthenticated", true);
         // You can also store the token in local storage or a cookie for future requests
         localStorage.setItem("token", res.data.token);
+        return res.data;
       } else {
         setIsAuthenticated(false);
-        console.error("Registration failed: No token received");
+        return { msg: "Registration failed: No token received" };
       }
     } catch (err) {
       setIsAuthenticated(false);
-      console.error("Registration failed:", err.response.data);
+      throw err.response.data;
     }
   };
 

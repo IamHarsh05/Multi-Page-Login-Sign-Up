@@ -39,7 +39,11 @@ const Register = () => {
         // Store user details in local storage
         localStorage.setItem(
           "user",
-          JSON.stringify({ ...formData, emailVerified: false })
+          JSON.stringify({
+            ...formData,
+            emailVerified: false,
+            verificationToken: response.verificationToken,
+          })
         );
         navigate("/profile-edit");
       }
