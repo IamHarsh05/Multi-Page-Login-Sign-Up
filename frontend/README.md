@@ -48,3 +48,4 @@ Add the `.env` file in the `frontend` directory with the necessary environment v
 
 - **src/components:** Contains reusable components used throughout the application.
 - **src/context:** Contains context providers and consumers for managing application-level states.
+- **src/app.js:** Main file manages rounting between different Pages.
