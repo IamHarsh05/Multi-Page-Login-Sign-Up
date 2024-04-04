@@ -51,7 +51,7 @@ const ProfileEdit = () => {
 
       // Send profile data to the server with JWT token in the headers
       const response = await axios.put(
-        `${process.env.REACT_APP_API_UR}/api/profile`,
+        `${process.env.REACT_APP_API_URL}/api/profile`,
         formDataToSend,
         {
           headers: {
@@ -101,9 +101,9 @@ const ProfileEdit = () => {
                 src={
                   profileImage instanceof File
                     ? URL.createObjectURL(profileImage)
-                    : `${process.env.REACT_APP_API_UR}/${profileImage}` ||
+                    : `${process.env.REACT_APP_API_URL}/${profileImage}` ||
                       (user
-                        ? `${process.env.REACT_APP_API_UR}/${imageUrl}`
+                        ? `${process.env.REACT_APP_API_URL}/${imageUrl}`
                         : "https://via.placeholder.com/150")
                 }
                 alt="Avatar"

@@ -7,7 +7,7 @@ const VerificationEmail = () => {
   const sendVerificationEmail = async () => {
     try {
       await axios.post(
-        `${process.env.REACT_APP_API_UR}/api/sendVerificationEmail`,
+        `${process.env.REACT_APP_API_URL}/api/sendVerificationEmail`,
         {
           email: user.email,
           verificationToken: user.verificationToken,
