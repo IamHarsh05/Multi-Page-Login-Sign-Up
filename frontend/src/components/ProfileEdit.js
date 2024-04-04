@@ -33,10 +33,10 @@ const ProfileEdit = () => {
         }
       );
       setProfileImage(response.data.path);
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ ...user, profileImage: response.data.path })
-      );
+      // Update the user object in local storage with the new profile image path
+      const updatedUser = { ...user, profileImage: response.data.path };
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+      // Note: You don't need to set the user state here since it's not used in this component
     } catch (error) {
       console.error("Error uploading profile image:", error);
       toast.error("Failed to upload profile image");

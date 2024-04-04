@@ -28,8 +28,12 @@ router.put(
   authMiddleware,
   upload.single("profileImage"),
   async (req, res) => {
+    const userId = req.user.id;
     try {
+      let user = await User.findById(userId);
       const imageUrl = await uploadFileToStorage(req.file); // Upload file to Firebase Storage
+      user.profileImage = imageUrl;
+      await user.save();
       res.json({ path: imageUrl });
     } catch (err) {
       console.error("Error uploading profile image:", err);
@@ -40,7 +44,7 @@ router.put(
 
 // Edit Profile Location
 router.put("/profile", authMiddleware, async (req, res) => {
-  const { location } = req.body;
+  const { location, profileImage } = req.body;
   const userId = req.user.id;
 
   try {
@@ -51,6 +55,7 @@ router.put("/profile", authMiddleware, async (req, res) => {
     }
 
     user.location = location;
+    user.profileImage = profileImage;
     await user.save();
 
     res.json({ msg: "Profile updated successfully" });
