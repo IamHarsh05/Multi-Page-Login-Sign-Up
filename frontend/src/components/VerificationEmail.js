@@ -6,10 +6,13 @@ const VerificationEmail = () => {
 
   const sendVerificationEmail = async () => {
     try {
-      await axios.post("http://localhost:5000/api/sendVerificationEmail", {
-        email: user.email,
-        verificationToken: user.verificationToken,
-      });
+      await axios.post(
+        `${process.env.REACT_APP_API_UR}/api/sendVerificationEmail`,
+        {
+          email: user.email,
+          verificationToken: user.verificationToken,
+        }
+      );
     } catch (error) {
       console.error("Registration failed:", error);
       // Handle error here, such as displaying an error message to the user

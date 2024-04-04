@@ -16,11 +16,14 @@ const Dashboard = () => {
         if (storedUser) {
           setUser(storedUser);
         } else if (token) {
-          const res = await axios.get("http://localhost:5000/api/details", {
-            headers: {
-              "x-auth-token": token,
-            },
-          });
+          const res = await axios.get(
+            `${process.env.REACT_APP_API_URL}/api/details`,
+            {
+              headers: {
+                "x-auth-token": token,
+              },
+            }
+          );
           setUser(res.data);
           localStorage.setItem("user", JSON.stringify(res.data));
         } else {

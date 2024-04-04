@@ -26,7 +26,7 @@ const UserTypeSelection = () => {
       const token = localStorage.getItem("token");
       // For simplicity, let's assume there's an API endpoint /api/user-type to handle user type selection
       const response = await axios.put(
-        "http://localhost:5000/api/userType",
+        `${process.env.REACT_APP_API_UR}/api/userType`,
         { userType: selectedOption },
         {
           headers: {

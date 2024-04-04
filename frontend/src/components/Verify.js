@@ -15,7 +15,7 @@ const Verification = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/verify-email",
+        `${process.env.REACT_APP_API_UR}/api/auth/verify-email`,
         {
           email,
           otp,
