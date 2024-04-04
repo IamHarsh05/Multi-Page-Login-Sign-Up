@@ -1,5 +1,5 @@
 const admin = require("firebase-admin");
-const serviceAccount = process.env.ServiceAccount;
+const serviceAccount = require("./multi-page-login-firebase-adminsdk-rlj9w-3b09b34731.js");
 
 // Initialize Firebase Admin SDK
 admin.initializeApp({
