@@ -13,10 +13,8 @@ export const AuthProvider = ({ children }) => {
         const token = localStorage.getItem("token");
         if (token) {
           const response = await axios.post(
-            `${process.env.REACT_APP_API_URl}/api/auth/verify-token`,
-            {
-              token,
-            }
+            `${process.env.REACT_APP_API_URL}/api/auth/verify-token`,
+            { token }
           );
           setIsAuthenticated(response.data.isAuthenticated);
         }
@@ -31,7 +29,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URl}/api/auth/login`,
+        `${process.env.REACT_APP_API_URL}/api/auth/login`,
         {
           email,
           password,
@@ -58,7 +56,7 @@ export const AuthProvider = ({ children }) => {
   const register = async (username, email, password) => {
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_API_URl}/api/auth/register`,
+        `${process.env.REACT_APP_API_URL}/api/auth/register`,
         {
           username,
           email,
@@ -84,7 +82,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       await axios.post(
-        `${process.env.REACT_APP_API_URl}/api/auth/logout`,
+        `${process.env.REACT_APP_API_URL}/api/auth/logout`,
         localStorage.getItem("token"),
         {
           // Add authorization header with JWT token from local storage
