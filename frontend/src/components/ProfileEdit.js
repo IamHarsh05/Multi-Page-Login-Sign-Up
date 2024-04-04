@@ -10,7 +10,7 @@ const ProfileEdit = () => {
     location: user && user.location ? user.location : "",
   });
   const [profileImage, setProfileImage] = useState(
-    user.profileImage ? user.profileImage : "uploads/User-Profile-PNG.png"
+    user.profileImage ? user.profileImage : "https://via.placeholder.com/150"
   );
 
   const navigate = useNavigate();
