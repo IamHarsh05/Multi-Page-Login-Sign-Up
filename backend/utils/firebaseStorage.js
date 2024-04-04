@@ -10,8 +10,6 @@ admin.initializeApp({
 const bucket = admin.storage().bucket();
 
 async function uploadFileToStorage(file) {
-  console.log(file);
-  console.log("uploading to storage");
   try {
     const response = await bucket.upload(file.path, {
       destination: `profileImages/${file.filename}`, // Customize the destination path as needed
