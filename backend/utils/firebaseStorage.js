@@ -1,5 +1,5 @@
 const admin = require("firebase-admin");
-const serviceAccount = require("./multi-page-login-firebase-adminsdk-rlj9w-3b09b34731.json");
+const serviceAccount = process.env.ServiceAccount;
 
 // Initialize Firebase Admin SDK
 admin.initializeApp({
@@ -10,7 +10,7 @@ admin.initializeApp({
 const bucket = admin.storage().bucket();
 
 async function uploadFileToStorage(file) {
-    console.log(file);
+  console.log(file);
   console.log("uploading to storage");
   try {
     const response = await bucket.upload(file.path, {
