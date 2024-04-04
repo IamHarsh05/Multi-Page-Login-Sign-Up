@@ -24,8 +24,8 @@ router.post("/sendVerificationEmail", async (req, res) => {
       from: '"Your App" <harshy050902@gmail.com>',
       to: email,
       subject: "Email Verification",
-      text: `Your verification code is: ${verificationToken}, verify here: http://localhost:3000/verify`,
-      html: `<p>Please verify your email address by clicking the following link: <a href="http://localhost:3000/verify">Verify Email</a></p>
+      text: `Your verification code is: ${verificationToken}, verify here: ${process.env.Frontend_URL}/verify`,
+      html: `<p>Please verify your email address by clicking the following link: <a href="${process.env.Frontend_URL}/verify">Verify Email</a></p>
       <p>Your verification code is: ${verificationToken}</p>
       `,
     });
