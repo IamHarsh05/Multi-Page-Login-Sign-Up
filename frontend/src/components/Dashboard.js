@@ -4,18 +4,16 @@ import { AuthContext } from "../AuthContext";
 import axios from "axios";
 
 const Dashboard = () => {
+  const storedUser = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
   const { logout } = useContext(AuthContext);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(storedUser);
 
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
         const token = localStorage.getItem("token");
-        const storedUser = JSON.parse(localStorage.getItem("user"));
-        if (storedUser) {
-          setUser(storedUser);
-        } else if (token) {
+        if (token) {
           const res = await axios.get(
             `${process.env.REACT_APP_API_URL}/api/details`,
             {
@@ -52,11 +50,7 @@ const Dashboard = () => {
             <div className="flex flex-col md:flex-row">
               <div className="p-4">
                 <img
-                  src={
-                    user.profileImage
-                      ? `${user.profileImage}`
-                      : ""
-                  }
+                  src={user.profileImage ? `${user.profileImage}` : ""}
                   alt={user.username}
                   className="w-32 h-32 rounded-full object-cover mb-4"
                 />
