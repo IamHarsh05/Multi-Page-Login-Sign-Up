@@ -54,8 +54,8 @@ const Dashboard = () => {
                 <img
                   src={
                     user.profileImage
-                      ? `http://localhost:5000/${user.profileImage}`
-                      : "http://localhost:5000/uploads/User-Profile-PNG.png"
+                      ? `${user.profileImage}`
+                      : ""
                   }
                   alt={user.username}
                   className="w-32 h-32 rounded-full object-cover mb-4"

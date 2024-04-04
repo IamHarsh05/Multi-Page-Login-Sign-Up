@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 const ProfileEdit = () => {
@@ -17,15 +17,30 @@ const ProfileEdit = () => {
 
   const { location } = formData;
 
-  const imageUrl =
-    profileImage instanceof File
-      ? URL.createObjectURL(profileImage)
-      : profileImage;
-
-  const handleAvatarUpload = (e) => {
+  const handleAvatarUpload = async (e) => {
     const file = e.target.files[0];
-    setProfileImage(file);
-    localStorage.setItem("user", JSON.stringify({ ...user, profileImage }));
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append("profileImage", file);
+      const response = await axios.put(
+        `${process.env.REACT_APP_API_URL}/api/profile/image`,
+        formDataToSend,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            "x-auth-token": localStorage.getItem("token"),
+          },
+        }
+      );
+      setProfileImage(response.data.path);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ ...user, profileImage: response.data.path })
+      );
+    } catch (error) {
+      console.error("Error uploading profile image:", error);
+      toast.error("Failed to upload profile image");
+    }
   };
 
   const onChange = (e) => {
@@ -39,44 +54,20 @@ const ProfileEdit = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Get JWT token from localStorage
-      const token = localStorage.getItem("token");
-
-      // Create FormData object to send as multipart/form-data
-      const formDataToSend = new FormData();
-      formDataToSend.append("location", location);
-      if (profileImage) {
-        formDataToSend.append("profileImage", profileImage);
-      }
-
-      // Send profile data to the server with JWT token in the headers
       const response = await axios.put(
         `${process.env.REACT_APP_API_URL}/api/profile`,
-        formDataToSend,
+        { location, profileImage },
         {
           headers: {
-            "Content-Type": "multipart/form-data",
-            "x-auth-token": token,
+            "Content-Type": "application/json",
+            "x-auth-token": localStorage.getItem("token"),
           },
         }
       );
-
-      if (response) {
-        toast.success(response.data.msg, {
-          onClose: () => {
-            navigate("/user-type-selection");
-          },
-        });
-      }
-
-      // Update user data in localStorage
-      const updatedUser = {
-        ...user,
-        location: formData.location,
-        profileImage: response.data.path,
-      };
-
+      toast.success(response.data.msg);
+      const updatedUser = { ...user, location };
       localStorage.setItem("user", JSON.stringify(updatedUser));
+      navigate("/user-type-selection");
     } catch (err) {
       const errorMessage = err.response?.data || "An error occurred";
       toast.error(errorMessage);
@@ -98,14 +89,7 @@ const ProfileEdit = () => {
           <div className="flex justify-center mb-4">
             <div className="relative">
               <img
-                src={
-                  profileImage instanceof File
-                    ? URL.createObjectURL(profileImage)
-                    : `${process.env.REACT_APP_API_URL}/${profileImage}` ||
-                      (user
-                        ? `${process.env.REACT_APP_API_URL}/${imageUrl}`
-                        : "https://via.placeholder.com/150")
-                }
+                src={profileImage || "https://via.placeholder.com/150"}
                 alt="Avatar"
                 className="w-32 h-32 rounded-full object-cover"
               />
@@ -150,18 +134,6 @@ const ProfileEdit = () => {
         >
           Next
         </button>
-        {user.emailVerified ? (
-          <></>
-        ) : (
-          <Link to={"/register"}>
-            <button
-              type="button"
-              className="w-full bg-pink-500 text-white m-2 py-2 rounded-md hover:bg-pink-600 transition-colors duration-300"
-            >
-              Back
-            </button>
-          </Link>
-        )}
       </div>
 
       <ToastContainer
