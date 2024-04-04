@@ -69,44 +69,46 @@ git clone https://github.com/your-username/your-repo.git
 
 ### 🌐 API Routes
 
-- POST /api/auth/register: Register a new user
-- POST /api/auth/login: Log in an existing user
-- POST /api/auth/logout: Log out the current user
-- POST /api/auth/verify-email: Verify user's email using OTP
-- PUT /api/profile/image: Update profile image
-- PUT /api/profile: Update user's profile
-- PUT /api/userType: Update user's type
-- GET /api/details: Fetch user details
+- POST `/api/auth/register`: Register a new user
+- POST `/api/auth/login`: Log in an existing user
+- POST `/api/auth/logout`: Log out the current user
+- POST `/api/auth/verify-email`: Verify user's email using OTP
+- PUT `/api/profile/image`: Update profile image
+- PUT `/api/profile`: Update user's profile
+- PUT `/api/userType`: Update user's type
+- GET `/api/details`: Fetch user details
 
 ### 🛠 Project Structure
 
-project/
-│
-├── node_modules/ # Directory for installed dependencies (automatically created)
-│
-├── Mail/
-│ ├── mail.js # Send Mail functionality 📧
-│
-├── middleware/
-│ ├── authMiddleware/ # Authentication middleware 🔒
-│
-├── model/
-│ ├── User/ # User model schema 👤
-│
-├── routes/
-│ ├── auth.js # Authentication APIs 🔑
-│ ├── details.js # User details API 📝
-│ ├── profile.js # Profile update APIs 🖼️
-│ ├── userType.js # User type update API ✨
-│
-├── utils/
-│ ├── firebase.js # Firebase image upload utility 📷
-│ ├── credentials.js # Firebase credentials 🔑
-│
-├── package.json # Project metadata and dependencies 📦
-├── package-lock.json # Automatically generated npm dependencies 🔒
-│
-└── server.js # Main server file 🚀
+```bash
+    backend/
+        │
+        ├── node_modules/ # Directory for installed dependencies (automatically created)
+        │
+        ├── Mail/
+        │ ├── mail.js # Send Mail functionality 📧
+        │
+        ├── middleware/
+        │ ├── authMiddleware/ # Authentication middleware 🔒
+        │
+        ├── model/
+        │ ├── User/ # User model schema 👤
+        │
+        ├── routes/
+        │ ├── auth.js # Authentication APIs 🔑
+        │ ├── details.js # User details API 📝
+        │ ├── profile.js # Profile update APIs 🖼️
+        │ ├── userType.js # User type update API ✨
+        │
+        ├── utils/
+        │ ├── firebase.js # Firebase image upload utility 📷
+        │ ├── credentials.js # Firebase credentials 🔑
+        │
+        ├── package.json # Project metadata and dependencies 📦
+        ├── package-lock.json # Automatically generated npm dependencies 🔒
+        │
+        └── server.js # Main server file 🚀
+```
 
 ### 🙏 Acknowledgements
 
