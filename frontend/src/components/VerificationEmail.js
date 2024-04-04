@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { toast } from "react-toastify";
 
 const VerificationEmail = () => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -13,6 +14,7 @@ const VerificationEmail = () => {
           verificationToken: user.verificationToken,
         }
       );
+      toast.success(`Verification email sent successfully`);
     } catch (error) {
       console.error("Registration failed:", error);
       // Handle error here, such as displaying an error message to the user

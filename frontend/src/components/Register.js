@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthContext";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -31,8 +32,10 @@ const Register = () => {
       const response = await register(username, email, password);
       console.log(response);
       if (response && response.msg === "User already exists") {
+        toast.error(response.msg);
         navigate("/register");
       } else {
+        toast.success(response.msg);
         // Store user details in local storage
         localStorage.setItem(
           "user",
@@ -42,7 +45,7 @@ const Register = () => {
       }
     } catch (error) {
       navigate("/register");
-      console.error("Registration failed:", error);
+      toast.error(error);
       // Handle error here, such as displaying an error message to the user
     }
   };

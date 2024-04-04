@@ -36,15 +36,12 @@ const UserTypeSelection = () => {
         }
       );
       if (response) {
-        toast.success(response.data.msg, {
-          onClose: () => {
-            if (!user.emailVerified) {
-              navigate("/verification-mail-sent");
-            } else {
-              navigate("/");
-            }
-          },
-        });
+        toast.success(response.data.msg);
+        if (!user.emailVerified) {
+          navigate("/verification-mail-sent");
+        } else {
+          navigate("/");
+        }
       }
       // Update userType in the user object in localStorage
       const updatedUser = { ...user, userType: selectedOption };
@@ -147,17 +144,6 @@ const UserTypeSelection = () => {
           </button>
         </div>
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </>
   );
 };

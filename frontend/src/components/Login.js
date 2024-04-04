@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -23,15 +23,12 @@ const Login = () => {
     try {
       const response = await login(email, password);
       if (response) {
-        toast.success(response.data.msg, {
-          onClose: () => {
-            if (user && !user.emailVerified) {
-              navigate("/verification-mail-sent");
-            } else {
-              navigate("/");
-            }
-          },
-        });
+        toast.success(response.data.msg);
+      }
+      if (user && !user.emailVerified) {
+        navigate("/verification-mail-sent");
+      } else {
+        navigate("/");
       }
     } catch (err) {
       toast.error(err.response.data.msg);
@@ -156,17 +153,6 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </section>
   );
 };

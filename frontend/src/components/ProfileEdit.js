@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const ProfileEdit = () => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -20,6 +20,7 @@ const ProfileEdit = () => {
   const handleAvatarUpload = async (e) => {
     const file = e.target.files[0];
     try {
+      toast.info("Uploading profile image...");
       const formDataToSend = new FormData();
       formDataToSend.append("profileImage", file);
       const response = await axios.put(
@@ -36,7 +37,7 @@ const ProfileEdit = () => {
       // Update the user object in local storage with the new profile image path
       const updatedUser = { ...user, profileImage: response.data.path };
       localStorage.setItem("user", JSON.stringify(updatedUser));
-      // Note: You don't need to set the user state here since it's not used in this component
+      toast.success("Profile image uploaded successfully");
     } catch (error) {
       console.error("Error uploading profile image:", error);
       toast.error("Failed to upload profile image");
@@ -135,18 +136,6 @@ const ProfileEdit = () => {
           Next
         </button>
       </div>
-
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </div>
   );
 };

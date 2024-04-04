@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Verification = () => {
@@ -23,7 +23,6 @@ const Verification = () => {
       );
       toast.success(res.data.msg);
       navigate("/");
-
       // Update userType in the user object in localStorage
       const updatedUser = { ...user, emailVerified: true };
       localStorage.setItem("user", JSON.stringify(updatedUser));
@@ -81,17 +80,6 @@ const Verification = () => {
           </form>
         </div>
       </main>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </div>
   );
 };
