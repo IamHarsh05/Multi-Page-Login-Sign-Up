@@ -30,7 +30,6 @@ const Register = () => {
     try {
       localStorage.setItem("isAuthenticated", true);
       const response = await register(username, email, password);
-      console.log(response);
       if (response && response.msg === "User already exists") {
         toast.error(response.msg);
         navigate("/register");
