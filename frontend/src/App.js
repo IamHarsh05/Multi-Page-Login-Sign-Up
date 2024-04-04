@@ -1,7 +1,7 @@
 // App.js
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { AuthProvider } from "./AuthContext";
+import { AuthProvider } from "./context/AuthContext";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import ProfileEdit from "./components/ProfileEdit";

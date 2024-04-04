@@ -1,7 +1,7 @@
 // ProtectedRoute.js
 import React, { useContext, useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { AuthContext } from "./AuthContext";
+import { AuthContext } from "./context/AuthContext";
 import Footer from "./components/Footer";
 
 const ProtectedRoute = ({ element, ...rest }) => {

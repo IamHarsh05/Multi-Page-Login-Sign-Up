@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Frontend of Multi Page Login / Signup App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This is the frontend client for your MERN (MongoDB, Express, React, Node.js) stack application. It provides the user interface and interacts with the backend server to fetch and display data, handle user authentication, and manage user interactions.
 
-In the project directory, you can run:
+## Prerequisites
 
-### `npm start`
+- Node.js installed on your machine
+- A running backend server (provided separately) accessible via API endpoints
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone this repository to your local machine.
+2. Navigate to the `frontend` directory: `cd frontend`.
+3. Install dependencies by running: `npm install`.
 
-### `npm test`
+## Configuration
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Update the `.env` file in the `frontend` directory with the necessary environment variables, such as the API URL of your backend server.
 
-### `npm run build`
+## Usage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Start the development server: `npm start`.
+2. Access the application in your web browser at [http://localhost:3000](http://localhost:3000).
+3. Interact with the frontend user interface to register, log in, navigate through pages, and perform various actions.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **User Authentication:** Register new users, log in existing users, and log out authenticated users.
+- **Protected Routes:** Certain routes are accessible only to authenticated users. Unauthorized users are redirected to the login page.
+- **Profile Management:** Edit user profile details, change password, and view user details.
+- **Email Verification:** Send verification emails to users and verify user emails using OTP.
 
-### `npm run eject`
+## Technologies Used
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **React.js:** Frontend JavaScript library for building user interfaces.
+- **React Router:** Declarative routing for React applications, enabling navigation between different views.
+- **Axios:** Promise-based HTTP client for making API requests from the frontend.
+- **Tailwind CSS (or your preferred styling framework):** Utility-first CSS framework for styling components.
+- **Context API:** State management tool in React for managing user authentication state and other application-level states.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Folder Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **src/components:** Contains reusable components used throughout the application.
+- **src/pages:** Contains individual page components for different routes.
+- **src/context:** Contains context providers and consumers for managing application-level states.
+- **src/utils:** Contains utility functions and helper modules.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Contributing
 
-## Learn More
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
