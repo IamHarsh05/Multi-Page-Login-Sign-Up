@@ -37,6 +37,7 @@ To get started with the project, follow the instructions below:
 
 - React.js, Node.js, Express.js, MongoDB
 - Axios, Tailwind CSS
+- Multer, Firebase
 - Context API for state management
 - Made with ❤️ by [Harshkumar Chaudhari](https://github.com/IamHarsh05)
 
