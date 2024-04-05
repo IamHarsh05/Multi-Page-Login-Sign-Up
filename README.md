@@ -1,4 +1,5 @@
-# 🚀 MERN Stack Application: User Authentication & Profile Management
+# 🚀 MERN Stack Application: Multi Page Signup App
+# 🔐 User Authentication & Profile Management
 
 Welcome to your MERN (MongoDB, Express, React, Node.js) stack application for user authentication, profile management, and email verification. This project consists of a backend server and a frontend client, providing a seamless user experience.
 
