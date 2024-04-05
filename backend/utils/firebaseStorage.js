@@ -23,7 +23,7 @@ async function uploadFileToStorage(file) {
     // Get the public URL of the uploaded file
     const [url] = await response[0].getSignedUrl({
       action: "read",
-      expires: new Date().getTime() + 3600 * 1000, // URL expires in 1 hour (adjust as needed)
+      expires: new Date('9999-12-31'), // URL expires at a distant future date
     });
 
     return url;
