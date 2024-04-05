@@ -23,6 +23,8 @@ const Dashboard = () => {
             }
           );
           setUser(res.data);
+          if (res.data.emailVerified !== true)
+            navigate(`/verification-mail-sent`);
           localStorage.setItem("user", JSON.stringify(res.data));
         } else {
           navigate("/login");
