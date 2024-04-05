@@ -16,7 +16,6 @@ Welcome to your MERN (MongoDB, Express, React, Node.js) stack application for us
         │   ├── ...               # Frontend source code files
         │
         ├── README.md             # Project overview and setup instructions
-        └── LICENSE               # License file
 ```
 
 ## 🌟 Features
