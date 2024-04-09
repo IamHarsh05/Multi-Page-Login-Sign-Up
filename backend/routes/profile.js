@@ -5,19 +5,7 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 const { uploadFileToStorage } = require("../utils/firebaseStorage");
-const { Storage } = require("@google-cloud/storage");
-const admin = require("firebase-admin");
 const User = require("../model/User");
-
-// Check if the Firebase app is already initialized
-if (!admin.apps.length) {
-  // Initialize Firebase Admin SDK
-  admin.initializeApp({
-    credential: admin.credential.applicationDefault(),
-  });
-}
-
-const bucket = admin.storage().bucket();
 
 // Multer configuration for temporary storage
 const tempStorage = multer.diskStorage({
@@ -73,18 +61,6 @@ router.put("/profile", authMiddleware, async (req, res) => {
     res.json({ msg: "Profile updated successfully" });
   } catch (err) {
     console.error("Error updating profile:", err);
-    res.status(500).send("Server Error");
-  }
-});
-
-// Get all files from Firebase Storage
-router.get("/files", async (req, res) => {
-  try {
-    const [files] = await bucket.getFiles();
-    const urls = files.map((file) => file.metadata.mediaLink);
-    res.send(urls);
-  } catch (error) {
-    console.error("Error fetching files from Firebase Storage:", error);
     res.status(500).send("Server Error");
   }
 });
